@@ -1,0 +1,65 @@
+196. Delete Duplicate Emails (https://leetcode.com/problems/delete-duplicate-emails/?envType=list&envId=e97a9e5m)
+
+Table: Person
+
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| email       | varchar |
++-------------+---------+
+id is the primary key column for this table.
+Each row of this table contains an email. The emails will not contain uppercase letters.
+ 
+
+Delete all the duplicate emails, keeping only one unique email with the smallest id.
+
+(For SQL users, please note that you are supposed to write a DELETE statement and not a SELECT one.)
+
+(For Pandas users, please note that you are supposed to modify Person in place.)
+
+After running your script, the answer shown is the Person table. The driver will first compile and run your piece of code and then show the Person table. The final order of the Person table does not matter.
+
+The result format is in the following example.
+
+ 
+
+Example 1:
+
+Input: 
+Person table:
++----+------------------+
+| id | email            |
++----+------------------+
+| 1  | john@example.com |
+| 2  | bob@example.com  |
+| 3  | john@example.com |
++----+------------------+
+Output: 
++----+------------------+
+| id | email            |
++----+------------------+
+| 1  | john@example.com |
+| 2  | bob@example.com  |
++----+------------------+
+Explanation: john@example.com is repeated two times. We keep the row with the smallest Id = 1.
+
+
+Summary :
+
+1. We have a table called "Person" with two columns: "id" and "email." The "id" column is the primary key, and each row in the table represents a person's information, including their unique ID and email address.
+
+2. The goal is to delete all duplicate emails from the table, keeping only one unique email entry with the smallest corresponding ID. In other words, we need to remove any rows that have the same email address as another row but retain the row with the smallest ID among the duplicates.
+
+3. We are instructed to write a DELETE statement (for SQL users) or modify the "Person" table in place (for Pandas users). This means we need to directly delete the duplicate rows from the table rather than selecting or retrieving them.
+
+4. After executing the script or code, the answer shown will be the resulting "Person" table. The final order of the table doesn't matter; what's important is that we have deleted the duplicate emails as described.
+
+
+Solution :
+
+Delete p1 from person as p1, person as p2 
+where p1.email =p2.email and 
+p1.id > p2.id 
+
+Runtime : 300 ms

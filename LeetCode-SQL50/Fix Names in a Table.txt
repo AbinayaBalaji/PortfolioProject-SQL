@@ -1,0 +1,61 @@
+1667. Fix Names in a Table (https://leetcode.com/problems/fix-names-in-a-table/?envType=list&envId=e97a9e5m)
+
+Table: Users
+
++----------------+---------+
+| Column Name    | Type    |
++----------------+---------+
+| user_id        | int     |
+| name           | varchar |
++----------------+---------+
+In SQL, user_id is the primary key for this table.
+This table contains the ID and the name of the user. The name consists of only lowercase and uppercase characters.
+ 
+
+Fix the names so that only the first character is uppercase and the rest are lowercase.
+
+Return the result table ordered by user_id.
+
+The result format is in the following example.
+
+ 
+
+Example 1:
+
+Input: 
+Users table:
++---------+-------+
+| user_id | name  |
++---------+-------+
+| 1       | aLice |
+| 2       | bOB   |
++---------+-------+
+Output: 
++---------+-------+
+| user_id | name  |
++---------+-------+
+| 1       | Alice |
+| 2       | Bob   |
++---------+-------+
+
+
+Summary :
+
+1. We have a table called Users with columns user_id and name. The user_id column is the primary key, and the name column contains the names of the users.
+
+2. The goal is to fix the names so that only the first character is uppercase and the rest are lowercase.
+
+3. To solve this, we need to update the name column for each row in the Users table. We'll convert the first character of each name to uppercase and the remaining characters to lowercase.
+
+4. Finally, we need to return the updated result table, ordered by user_id.
+
+
+Solution :
+
+select user_id,
+       concat(upper(left(name, 1)), lower(right(name, length(name) - 1))) as name
+from Users
+group by 1
+order by 1;
+
+Runtime : 288 ms
