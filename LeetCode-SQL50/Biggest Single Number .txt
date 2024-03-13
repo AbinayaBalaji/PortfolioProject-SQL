@@ -1,0 +1,100 @@
+619. Biggest Single Number (https://leetcode.com/problems/biggest-single-number/?envType=study-plan-v2&envId=top-sql-50)
+
+Table: MyNumbers
+
++-------------+------+
+| Column Name | Type |
++-------------+------+
+| num         | int  |
++-------------+------+
+There is no primary key for this table. It may contain duplicates.
+Each row of this table contains an integer.
+ 
+
+A single number is a number that appeared only once in the MyNumbers table.
+
+Write an SQL query to report the largest single number. If there is no single number, report null.
+
+The query result format is in the following example.
+
+ 
+
+Example 1:
+
+Input: 
+MyNumbers table:
++-----+
+| num |
++-----+
+| 8   |
+| 8   |
+| 3   |
+| 3   |
+| 1   |
+| 4   |
+| 5   |
+| 6   |
++-----+
+Output: 
++-----+
+| num |
++-----+
+| 6   |
++-----+
+Explanation: The single numbers are 1, 4, 5, and 6.
+Since 6 is the largest single number, we return it.
+Example 2:
+
+Input: 
+MyNumbers table:
++-----+
+| num |
++-----+
+| 8   |
+| 8   |
+| 7   |
+| 7   |
+| 3   |
+| 3   |
+| 3   |
++-----+
+Output: 
++------+
+| num  |
++------+
+| null |
++------+
+Explanation: There are no single numbers in the input table so we return null.
+
+
+
+Summary :
+
+1. Table Overview: You are given a table called "MyNumbers" with one column:
+
+      num (integer): Each row of this table contains an integer.
+
+2. Objective: The task is to find the largest single number from the "MyNumbers" table. A single number is a number that appears only once in the table.
+
+3. Finding Single Numbers: To achieve this, you need to identify all the numbers that appear only once in the "MyNumbers" table. If there are multiple single numbers, you need to find the largest among them.
+
+4. Output Format: The output should be a result table with one column:
+
+      num (integer): The largest single number from the "MyNumbers" table. If there are no single numbers, the result should be null.
+
+
+
+Solution:
+
+
+SELECT MAX(num) AS num
+FROM
+    (
+        SELECT num
+        FROM MyNumbers
+        GROUP BY 1
+        HAVING COUNT(1) = 1
+    ) AS t;
+
+Runtime : 449 ms
+
