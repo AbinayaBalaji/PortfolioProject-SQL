@@ -12,3 +12,6 @@ https://www.youtube.com/watch?v=qfyynHBFOsM
 Language: My sql 
 
 Tool : SQL Server Management Studio 2019
+
+LeetCode 
+Has questions and answers for 50 SQL questions from Leetcode.
